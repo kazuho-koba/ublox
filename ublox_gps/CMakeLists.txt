@@ -25,6 +25,7 @@ find_package(std_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(ublox_msgs REQUIRED)
 find_package(ublox_serialization REQUIRED)
+find_package(rtcm_msgs REQUIRED)
 
 include_directories(include)
 
@@ -55,6 +56,8 @@ ament_target_dependencies(ublox_gps
   "rclcpp"
   "rclcpp_components"
   "sensor_msgs"
+  "ublox_msgs"
+  "rtcm_msgs"
   "std_msgs"
   "tf2"
   "ublox_msgs"
