@@ -620,6 +620,22 @@ void Gps::setRawDataCallback(const Worker::WorkerRawCallback& callback) {
   worker_->setRawDataCallback(callback);
 }
 
+bool Gps::sendRtcm(const std::vector<uint8_t>& rtcm) {
+  if (!worker_) {
+    RCLCPP_ERROR(logger_, "RTCM send failed: worker not initialized");
+    return false;
+  }
+
+  if (rtcm.empty()) {
+    RCLCPP_WARN(logger_, "Received empty RTCM message");
+    return false;
+  }
+
+  return worker_->send(
+      reinterpret_cast<const unsigned char*>(rtcm.data()),
+      static_cast<unsigned int>(rtcm.size()));
+}
+
 bool Gps::setUTCtime() {
   RCLCPP_DEBUG(logger_, "Setting time to UTC time");
 

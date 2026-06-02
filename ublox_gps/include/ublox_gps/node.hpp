@@ -37,6 +37,7 @@
 // ROS includes
 #include <diagnostic_updater/diagnostic_updater.hpp>
 #include <rclcpp/rclcpp.hpp>
+#include <rtcm_msgs/msg/message.hpp>
 // U-Blox msgs nicludes
 #include <ublox_msgs/msg/cfg_cfg.hpp>
 #include <ublox_msgs/msg/cfg_dat.hpp>
@@ -280,6 +281,17 @@ class UbloxNode final : public rclcpp::Node {
 
   //! Handles communication with the U-Blox Device
   std::shared_ptr<ublox_gps::Gps> gps_;
+
+  /**
+   * @brief Callback for RTCM correction messages.
+   *
+   * The received RTCM byte stream is forwarded to the u-blox receiver
+   * through the existing GPS communication worker.
+   */
+  void rtcmCallback(const rtcm_msgs::msg::Message::SharedPtr msg);
+
+  //! Subscriber for RTCM correction data from an NTRIP client
+  rclcpp::Subscription<rtcm_msgs::msg::Message>::SharedPtr rtcm_sub_;
 
   rclcpp::TimerBase::SharedPtr keep_alive_;
   rclcpp::TimerBase::SharedPtr poller_;
