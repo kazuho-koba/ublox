@@ -611,10 +611,10 @@ namespace ublox_node
       return;
     }
 
-    RCLCPP_DEBUG(
-        this->get_logger(),
-        "Sent RTCM message to u-blox receiver: %zu bytes",
-        msg->message.size());
+    // RCLCPP_DEBUG(
+    //     this->get_logger(),
+    //     "Sent RTCM message to u-blox receiver: %zu bytes",
+    //     msg->message.size());
   }
 
   void UbloxNode::subscribe()
