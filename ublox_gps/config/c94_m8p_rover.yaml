@@ -36,10 +36,10 @@ ublox_gps_node:
       in: 32                    # RTCM 3
       out: 0                    # No UART out for rover
 
-    gnss:
-      glonass: true             # Supported by C94-M8P
-      beidou: true             # Supported by C94-M8P
-      qzss: true                # Supported by C94-M8P
+    # gnss:
+    #   glonass: true             # Supported by C94-M8P
+    #   beidou: false             # Supported by C94-M8P
+    #   qzss: true                # Supported by C94-M8P
 
     dgnss_mode: 3               # Fixed mode
 
