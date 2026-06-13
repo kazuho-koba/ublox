@@ -38,7 +38,7 @@ ublox_gps_node:
 
     gnss:
       glonass: true             # Supported by C94-M8P
-      beidou: false             # Supported by C94-M8P
+      beidou: true             # Supported by C94-M8P
       qzss: true                # Supported by C94-M8P
 
     dgnss_mode: 3               # Fixed mode
